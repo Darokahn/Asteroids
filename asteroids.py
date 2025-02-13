@@ -75,8 +75,8 @@ class Asteroids:
         for _ in range(rock_amount):
             x = random.randint(0, self.worldwidth)
             y = random.randint(0, self.worldheight)
-            dx = random.randint(0, 100)/50
-            dy = random.randint(0, 100)/50
+            dx = random.randint(-100, 100)/50
+            dy = random.randint(-100, 100)/50
             spin_rate = random.randint(0, 100)/100
             rock = Rock(x, y, dx, dy, 0, self.worldwidth, self.worldheight, spin_rate, 40, 15)
             rocks.append(rock)
@@ -146,8 +146,8 @@ class Asteroids:
             obj.draw(surface)
 
 if __name__ == '__main__':
-    a = Asteroids(800, 800, 10)
-    s = pygame.display.set_mode((800, 800))
+    a = Asteroids(1000, 1000, 10)
+    s = pygame.display.set_mode((a.worldwidth, a.worldheight))
     keys = []
     clock = pygame.time.Clock()
     FPS = 60

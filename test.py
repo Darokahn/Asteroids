@@ -31,5 +31,6 @@ while True:
             point = get_cart(angle, mag)
             point = add_vector2(point, obj.get_pos())
             pygame.draw.circle(s, "green", point, 2)
+    time.sleep(0.1)
     pygame.display.update()
     pygame.event.get()

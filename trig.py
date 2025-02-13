@@ -55,9 +55,6 @@ def angle_is_between(angle1, angle2, arg):
 def lesser_arc_is_clockwise(angle1, angle2):
     full_rotation = (2 * math.pi)
     angle1, angle2 = normalize_angles(angle1, angle2)
-    
-    
-    
 
 def get_y_intercept(point, slope):
     x, y = point

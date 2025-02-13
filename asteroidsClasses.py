@@ -361,7 +361,8 @@ class Bullet(Circle):
 
 class Star(Circle):
     def __init__(self, x, y, dx, dy, worldwidth, worldheight, lifetime, distance):
-        super().__init__(x, y, dx, dy, 0, worldwidth, worldheight, 1, "white", 0.05, distance)
+        color = pygame.Color(255 - random.randrange(100), 255 - random.randrange(100), 255 - random.randrange(100))
+        super().__init__(x, y, dx, dy, 0, worldwidth, worldheight, 1, color, 0.05, distance)
         self.lifetime = lifetime
         self.warp = False
         self.previous_position = self.get_pos()
@@ -392,12 +393,10 @@ class Star(Circle):
         self.previous_position = self.get_pos()
 
     def draw(self, surface):
-        amplitude = 255
-        half_amplitude = amplitude / 2
-        brightness = (math.sin(self.lifetime) + 1) * half_amplitude
-        extra_sparkle = brightness * 0.01
-        color = [brightness for i in range(3)]
-        radius = self.radius + extra_sparkle
+        brightness = (math.sin(self.lifetime) + 1) / 2
+        extra_sparkle = brightness
+        color = [int(brightness * colorComponent)  for colorComponent in self.color[0:3]]
+        radius = self.radius + (extra_sparkle * 2)
         
         if self.warp:
             pygame.draw.line(surface, color, self.get_pos(), self.previous_position, int(radius*2))

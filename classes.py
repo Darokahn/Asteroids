@@ -7,18 +7,6 @@ from globalmessage import GLOBAL
 
 GLOBAL.add_channel("ship-moved")
 
-class Init:
-    def __init__(self, args, nonmembers=None, func=lambda x, y: None):
-        if not nonmembers:
-            nonmembers = []
-        nonmembers.append("self")
-        for key, value in args.items():
-            if not key in nonmembers:
-                setattr(self, key, value)
-
-        func(self, args)
-
-
 class Movable:
     def __init__(self, x, y, dx, dy, worldwidth, worldheight):
         self.x = x
